@@ -1,0 +1,53 @@
+<script>
+const province = "(())"
+function childCheck(arr){
+  var length = arr.length
+  console.log(length)
+  if(length == 0){
+    return true
+  }else if(length%2 != 0){
+    return false
+  }else{
+    for (i=0;i<length-1;i++){
+      for (j=i+1;j<length;j++){
+        if((arr[i] == '(' && arr[j] ==')') || (arr[i] == '{' && arr[j] =='}') || (arr[i] == '{' && arr[j] =='}')){
+          if((length-j-1)%2 == 0){
+            let arr1 = arr.slice(i+1,j)
+            console.log(arr1)
+            let res1 = childCheck(arr1)
+            console.log(res1)
+            console.log('ccc')
+
+            let arr2 = arr.slice(j+1,length)
+            console.log(arr2)
+
+            let res2 = childCheck(arr2)
+            console.log(res2)
+
+            return res1&&res2
+          }else{
+            return false
+          }
+        }else{
+          if(j==length-1){
+              return false
+            }
+        }
+      }
+    }
+  }
+}
+function vv(s) {
+    var arr = s.split('')
+    var cc = childCheck(arr)
+    console.log(cc)
+}
+function toHump(name) {
+          var xx = name.replace(/\_(\w)/g, function(all, letter){
+              return letter.toUpperCase();
+          });
+          console.log(xx)
+      }
+// vv(province)
+toHump('xmng_klgkd_vvvv')
+</script>
